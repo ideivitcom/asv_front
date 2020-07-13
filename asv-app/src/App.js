@@ -1,12 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
+import Intro from './components/Intro';
 import './App.css';
 
-const Intro = (props) => (
-  <p className="App-intro"> 
-    Functional component
-  </p>
-)
 
 function App() {
   return (
