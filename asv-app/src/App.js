@@ -2,15 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const Intro = (props) => (
+  <p className="App-intro"> 
+    Functional component
+  </p>
+)
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">         
         <p> A.S.V. Ambulance Service. </p>
       </header>
-      <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+     <Intro />
     </div>
   );
 }
