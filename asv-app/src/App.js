@@ -1,15 +1,16 @@
 import React from 'react';
-import Intro from './components/Intro';
 import './App.css';
+import TableAmbulances from './components/ambulances'
+
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">         
+      <header className="App-header">
         <p> A.S.V. Ambulance Service. </p>
       </header>
-     <Intro msg="Hola!" />
+      <TableAmbulances />
     </div>
   );
 }
