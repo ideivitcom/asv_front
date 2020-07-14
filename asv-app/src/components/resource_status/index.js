@@ -8,18 +8,30 @@ import React, { useEffect } from "react";
 
 function ResourceStatus(){
     const { useState } = React;
-    const [serverUp, setServerUp] = useState([false]);    
-    const [dbUp, setDbUp] = useState([false]);
+    const [serverUp, setServerUp] = useState(false);  
+    const [serverDown, setServerDown] = useState(false);   
+    const [timer, setTimer] = useState(0);    
+    
 
     const URL_GET_STATUS = 'http://localhost:5000/api/status'
 
     function get_status(){
         fetch(URL_GET_STATUS)
+        .then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        })
         .then(res => res.json())
         .then(result =>  
             {
                 setServerUp(result['server'])
-                setDbUp(result['db']);
+                setServerDown(!result['server'])                
+            })
+            .catch(function(error) {
+                setServerUp(false)
+                setServerDown(true)               
             })
     }
     
@@ -27,7 +39,12 @@ function ResourceStatus(){
 
 
     useEffect(() => {
-        get_status()      
+        let interval = null;
+        interval = setInterval(() => {
+            get_status();
+          }, 1000);
+        return () => clearInterval(interval);
+                    
     }, [])  
 
     return (
@@ -38,9 +55,9 @@ function ResourceStatus(){
                     <p>Server <ThumbUp/></p>
                 }               
                 {
-                    dbUp
+                    !serverUp
                     &&
-                    <p>Data Base <ThumbUp/></p>
+                    <p>Server<ThumbDown/></p>
                 }               
             </div>
     )
