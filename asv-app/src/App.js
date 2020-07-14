@@ -12,11 +12,15 @@ function App() {
       <header className="App-header">
         <p> A.S.V. Ambulance Service. </p>
       </header>
+
       <ResourceStatus />
+      <div id="commands">
+        <TransferForm />
+        <LocateForm />   
+      </div>       
       <TableAmbulances />
       <TableJourneys />
-      <TransferForm />
-      <LocateForm />
+      
     </div>
   );
 }

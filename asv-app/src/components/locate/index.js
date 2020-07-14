@@ -32,8 +32,8 @@ class LocateForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <TextField
-                    id="standard-number"
-                    label="Number"
+                    id="locate"
+                    label="Locate"
                     type="number"
                     InputLabelProps={{
                         shrink: true,

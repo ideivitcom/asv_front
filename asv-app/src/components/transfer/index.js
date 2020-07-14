@@ -35,8 +35,8 @@ class TransferForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <TextField
-                    id="standard-number"
-                    label="Number"
+                    id="transfer"
+                    label="Transfer"
                     type="number"
                     InputLabelProps={{
                         shrink: true,

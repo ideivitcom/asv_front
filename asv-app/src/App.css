@@ -31,3 +31,41 @@
     transform: rotate(360deg);
   }
 }
+
+
+.MuiSvgIcon-root{
+  width: 20px;
+  margin-left: 10px;
+}
+.MuiPaper-elevation2{
+  max-width: 1400px !important;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.MuiButton-containedPrimary{
+  color: #fff;
+  background-color: #1abc9c !important;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: #16a085 !important;
+}
+.MuiButton-containedSecondary {
+  color: #fff;
+  background-color: #e74c3c !important;
+}
+.MuiButton-containedSecondary:hover {
+  color: #fff;
+  background-color: #c0392b !important;
+}
+
+.MuiButton-contained{
+  margin: 0px 10px !important;
+}
+
+.Component-horizontalScrollContainer-12{
+padding: 15px 15px 20px 15px;
+}
+.commands{
+  display: inline-flex;
+}

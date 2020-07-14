@@ -52,12 +52,12 @@ function ResourceStatus(){
                 {                 
                     serverUp
                     &&
-                    <p>Server <ThumbUp/></p>
+                    <p>Server Status<ThumbUp/></p>
                 }               
                 {
                     !serverUp
                     &&
-                    <p>Server<ThumbDown/></p>
+                    <p>Server Status<ThumbDown/></p>
                 }               
             </div>
     )
