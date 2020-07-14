@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
       },
 }));
+
+const URL_POST_TRANSFER = "http://localhost:5000/api/locate"
+
+
 class LocateForm extends React.Component {
     constructor(props) {
         super(props);
@@ -24,22 +28,44 @@ class LocateForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
+    handleChange = (event) => {
+        this.setState({
+          value: event.target.value,
+        });
+      };
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", this.state.value);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch(URL_POST_TRANSFER, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));        
     }
+
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <TextField
+                    onChange={this.handleChange}
                     id="locate"
                     label="Locate"
                     type="number"
+                    value={this.state.value}
                     InputLabelProps={{
                         shrink: true,
                     }}
