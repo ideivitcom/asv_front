@@ -3,7 +3,8 @@ import './App.css';
 import TableAmbulances from './components/ambulances'
 import ResourceStatus from './components/resource_status'
 import TableJourneys from './components/journeys'
-
+import TransferForm from './components/transfer'
+import LocateForm from './components/locate'
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <ResourceStatus />
       <TableAmbulances />
       <TableJourneys />
+      <TransferForm />
+      <LocateForm />
     </div>
   );
 }
