@@ -1,14 +1,19 @@
 import React from "react"
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '5ch',
+        '& > *': {
+          margin: theme.spacing(1),
         },
-    },
+      },
+      input: {
+        display: 'none',
+      },
 }));
 class LocateForm extends React.Component {
     constructor(props) {
@@ -39,6 +44,11 @@ class LocateForm extends React.Component {
                         shrink: true,
                     }}
                 />
+            <label htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span"  onClick={this.handleSubmit}>
+                <PlayCircleOutlineIcon />
+                </IconButton>
+            </label>
             </form>
         );
     }

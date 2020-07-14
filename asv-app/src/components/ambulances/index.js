@@ -44,7 +44,7 @@ function TableAmbulances() {
                     <div>
                         <MTableToolbar {...props} />
                         <div style={{ padding: '0px 10px' }}>
-                            <Button variant="contained" color="primary"onClick={() =>
+                            <Button variant="contained" color="primary" onClick={() =>
                             {                            
 
                                 fetch(URL_PUT_AMBULANCES, {                                    
@@ -60,7 +60,7 @@ function TableAmbulances() {
                                                                
                                       
                              }}> Save </Button>
-                            <Button variant="contained" color="Secondary"onClick={() => {
+                            <Button variant="contained" color="secondary" onClick={() => {
                                 fetch(URL_GET_AMBULANCES,{
                                     method:'GET',
                                     headers: {
