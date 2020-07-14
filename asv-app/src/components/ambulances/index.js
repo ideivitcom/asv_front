@@ -80,7 +80,7 @@ function TableAmbulances() {
                                       )
                                         .catch(
                                             function(response){
-                                                setMessage("There was a problem")
+                                                setMessage("There was a problem saving the data")
                                                 setState('error')
                                                 setOpen(true)
                                              }
@@ -98,7 +98,20 @@ function TableAmbulances() {
                                         },
                                     })
                                         .then(res => res.json())
-                                        .then(json => setData(json));
+                                        .then(function(json){
+                                            setData(json)
+                                            setMessage("The changes was discarted")
+                                            setState('success')
+                                            setOpen(true)
+                                         })
+                                        .catch(
+                                            function(response){
+                                                setMessage("There was a problem saving the data")
+                                                setState('error')
+                                                setOpen(true)
+                                             }
+                                        );
+
 
                                 }}
                                 > Restore </Button>
