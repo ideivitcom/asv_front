@@ -30,9 +30,11 @@ class LocateForm extends React.Component {
         super(props);
         this.state = { 
             value: '' ,
-            status: 'info',
+            message_status: 'info',
             message: '',
-            open:false
+            open:false,
+            status:0
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -69,21 +71,46 @@ class LocateForm extends React.Component {
             redirect: 'follow'
         };
         var that = this
-        fetch(URL_POST_LOCATE, requestOptions)           
-            .then(function(response){
-                that.setState({
-                    message:"Locate",
-                    open:true,
-                    status:'success'
-                });                
-                
+        fetch(URL_POST_LOCATE, requestOptions)             
+        .then(function(response){
+            that.setState({                            
+                status:response.status
+            });     
+            return response.text()
+            
+         })
+         .then(function(result){         
+             let message = ''       
+             let m_status = 'info'
+             if (that.state.status == 200)
+             { 
+                message ="Assigned to ambulance with id"+JSON.parse(result)['id'];
+
+             }
+             else if (that.state.status == 204)
+             {
+                message ="The group is wating"                
+             }
+             else if (that.state.status == 404)
+             {
+                message ="Group not found"
+                m_status = 'warning'
+             }        
+
+            
+             that.setState({   
+                message:message,
+                message_status:m_status,       
+                open:true
              })
+             
+         })
             .catch(
                 function(response){
                     that.setState({
                         message:"There was a problem in locate",
                         open:true,
-                        status:'error'
+                        message_status:'error'
                     });    
                    
                  }
@@ -112,7 +139,7 @@ class LocateForm extends React.Component {
                     </label>
                 </form>
                 <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose}>
-                    <Alert onClose={this.handleClose} severity={this.state.status}>
+                    <Alert onClose={this.handleClose} severity={this.state.message_status}>
                         {this.state.message}
                     </Alert>
                 </Snackbar>

@@ -69,3 +69,17 @@ padding: 15px 15px 20px 15px;
 .commands{
   display: inline-flex;
 }
+
+#commands{
+  max-width: 1400px;
+  width: 100%;
+  margin: 0px auto;
+}
+#commands form{
+  width: 255px;
+  float: right;
+  margin-right: 30px;
+}
+.MuiPaper-elevation2{
+  margin-top: 80px;
+}
