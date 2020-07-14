@@ -5,22 +5,23 @@ import Button from '@material-ui/core/Button';
 
 
 
-function TableAmbulances() {
+function TableJourneys() {
     const { useState } = React;
 
     const [columns, setColumns] = useState([
-        { title: 'Ambulance Id', field: 'id' },
-        { title: 'Max Capacity', field: 'seats' },
+        { title: 'Group Id', field: 'id' },
+        { title: 'Size', field: 'people' },
 
     ]);
 
-    const URL_GET_AMBULANCES = 'http://127.0.0.1:5000/api/ambulances/'
-    const URL_PUT_AMBULANCES = 'http://127.0.0.1:5000/api/ambulances/'
+    const URL_GET_JOURNEYS = 'http://127.0.0.1:5000/api/journeys/'
+    const URL_PUT_JOURNEYS = 'http://127.0.0.1:5000/api/journeys/'
 
-    const [data, setData] = useState([]);    
+    const [data, setData] = useState([]);
+    
 
     useEffect(() => {
-        fetch(URL_GET_AMBULANCES)
+        fetch(URL_GET_JOURNEYS)
             .then(res => res.json())
             .then(json => setData(json));
 
@@ -29,7 +30,7 @@ function TableAmbulances() {
      
     return (
         <MaterialTable
-            title="Ambulances"
+            title="Journeys"
             columns={columns}
             data={data}
             options={{
@@ -47,7 +48,7 @@ function TableAmbulances() {
                             <Button variant="contained" color="primary"onClick={() =>
                             {                            
 
-                                fetch(URL_PUT_AMBULANCES, {                                    
+                                fetch(URL_PUT_JOURNEYS, {                                    
                                   
                                     method:'PUT',
                                     headers: {
@@ -61,7 +62,7 @@ function TableAmbulances() {
                                       
                              }}> Save </Button>
                             <Button variant="contained" color="Secondary"onClick={() => {
-                                fetch(URL_GET_AMBULANCES,{
+                                fetch(URL_GET_JOURNEYS,{
                                     method:'GET',
                                     headers: {
                                     'Accept': 'application/json',
@@ -114,4 +115,5 @@ function TableAmbulances() {
     )
 }
 
-export default TableAmbulances;
+export default TableJourneys;
+
