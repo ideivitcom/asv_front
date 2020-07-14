@@ -84,7 +84,7 @@ class LocateForm extends React.Component {
              let m_status = 'info'
              if (that.state.status == 200)
              { 
-                message ="Assigned to ambulance with id"+JSON.parse(result)['id'];
+                message ="Assigned to ambulance with id:  "+JSON.parse(result)['id'];
 
              }
              else if (that.state.status == 204)
